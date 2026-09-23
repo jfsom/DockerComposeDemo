@@ -1,0 +1,13 @@
+services:
+  dockercomposedemobackendapp:
+    image: ${DOCKER_REGISTRY-}dockercomposedemobackendapp
+    build:
+      context: .
+      dockerfile: DockerComposeDemoBackendApp/Dockerfile
+
+  dockercomposedemouiapp:
+    image: ${DOCKER_REGISTRY-}dockercomposedemouiapp
+    build:
+      context: .
+      dockerfile: DockerComposeDemoUIApp/Dockerfile
+

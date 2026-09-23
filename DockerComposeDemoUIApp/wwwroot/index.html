@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 750px;
+            margin: 60px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto 30px auto;
+            padding: 14px 28px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: #1d4ed8;
+            }
+
+        .employee-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #f9fbff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+            .card h3 {
+                margin: 0 0 8px 0;
+                color: #111827;
+            }
+
+            .card p {
+                margin: 5px 0;
+                color: #555;
+            }
+
+        .badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 10px;
+            background: #dbeafe;
+            color: #1e40af;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Employees Dashboard</h1>
+        <p class="subtitle">Click the button to load employees from backend API</p>
+
+        <button onclick="getEmployees()">Get Employees</button>
+
+        <div id="employeeList" class="employee-list"></div>
+    </div>
+
+    <script>
+        async function getEmployees() {
+            const response = await fetch("http://localhost:5600/api/employees");
+            const employees = await response.json();
+
+            const employeeList = document.getElementById("employeeList");
+            employeeList.innerHTML = "";
+
+            employees.forEach(emp => {
+                employeeList.innerHTML += `
+                    <div class="card">
+                        <h3>${emp.name}</h3>
+                        <p><strong>Role:</strong> ${emp.role}</p>
+                        <p><strong>Location:</strong> ${emp.location}</p>
+                        <span class="badge">${emp.department}</span>
+                    </div>
+                `;
+            });
+        }
+    </script>
+
+</body>
+</html>

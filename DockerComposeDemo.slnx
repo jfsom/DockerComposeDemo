@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DockerComposeDemoBackendApp/DockerComposeDemoBackendApp.csproj" />
+  <Project Path="DockerComposeDemoUIApp/DockerComposeDemoUIApp.csproj" />
+</Solution>
