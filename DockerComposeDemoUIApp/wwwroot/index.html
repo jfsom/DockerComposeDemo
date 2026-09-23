@@ -94,7 +94,7 @@
 
     <script>
         async function getEmployees() {
-            const response = await fetch("http://localhost:5600/api/employees");
+            const response = await fetch("http://localhost:5279/api/employees");
             const employees = await response.json();
 
             const employeeList = document.getElementById("employeeList");

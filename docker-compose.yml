@@ -1,13 +1,19 @@
 services:
-  dockercomposedemobackendapp:
-    image: ${DOCKER_REGISTRY-}dockercomposedemobackendapp
+
+  backendapp:
+    image: dockercomposebackend:2.0
     build:
       context: .
       dockerfile: DockerComposeDemoBackendApp/Dockerfile
+    container_name: backendcontainer
+    ports:
+      - "5279:8080"
 
-  dockercomposedemouiapp:
-    image: ${DOCKER_REGISTRY-}dockercomposedemouiapp
+  uiapp:
+    image: dockercomposeui:2.0
     build:
       context: .
       dockerfile: DockerComposeDemoUIApp/Dockerfile
-
+    container_name: uicontainer
+    ports:
+      - "5129:8080"

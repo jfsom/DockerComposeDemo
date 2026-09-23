@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="docker-compose.yml" />
+  </Folder>
   <Project Path="DockerComposeDemoBackendApp/DockerComposeDemoBackendApp.csproj" />
   <Project Path="DockerComposeDemoUIApp/DockerComposeDemoUIApp.csproj" />
 </Solution>
